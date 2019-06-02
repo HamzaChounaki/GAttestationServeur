@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Transient;
 
 
 
@@ -18,6 +19,7 @@ public class Profil {
 	private int id;
 	private int code;
 	private String libelle;
+	@Transient
 	@OneToMany(mappedBy="profil")
 	private List<Employe> employes;
 	public int getId() {

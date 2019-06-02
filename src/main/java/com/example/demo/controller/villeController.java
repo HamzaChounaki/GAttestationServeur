@@ -20,7 +20,7 @@ import com.example.demo.service.VilleService;
 @RestController
 @RequestMapping("/api/ville")
 @CrossOrigin
-public class villeController {
+public class VilleController {
 
 	@Autowired(required = true)
 	private VilleService villeService;

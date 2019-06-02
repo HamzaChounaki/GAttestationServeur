@@ -26,7 +26,7 @@ public class EtudiantController {
 	private EtudiantService etudiantService;
 	
 	@GetMapping
-	public List<Etudiant> getEtudians(){
+	public List<Etudiant> getEtudiants(){
 		return etudiantService.findAll();
 	}
 	

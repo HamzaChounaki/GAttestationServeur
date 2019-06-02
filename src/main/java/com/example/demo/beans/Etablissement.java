@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Transient;
 
 
 
@@ -19,13 +20,13 @@ public class Etablissement {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String nom;
+	@ManyToOne(fetch = FetchType.EAGER)
+	private Ville ville;
+	@Transient
 	@OneToMany(mappedBy="etablissement")
 	private List<Employe> employes;
 	@OneToMany(mappedBy="etablissement")
 	private List<Etudiant> etudiants;
-	@ManyToOne(fetch = FetchType.EAGER)
-	private Ville ville;
-	
 	
 	public List<Employe> getEmployes() {
 		return employes;

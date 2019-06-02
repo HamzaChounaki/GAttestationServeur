@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Transient;
 
 @Entity
 public class Employe {
@@ -24,6 +25,7 @@ public class Employe {
 	private Date dateNaissance;
 	private String lieuNaissance;
 	private Date dateEmbauche;
+	@Transient
 	@ManyToOne(fetch = FetchType.EAGER)
 	private Profil profil;
 	@OneToOne(cascade=CascadeType.ALL)

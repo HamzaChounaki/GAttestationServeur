@@ -14,41 +14,41 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 
-import com.example.demo.beans.TypeCompte;
-import com.example.demo.service.TypeCompteService;
+import com.example.demo.beans.Type;
+import com.example.demo.service.TypeService;
 
 @RestController
-@RequestMapping("/api/typeCompte")
+@RequestMapping("/api/type")
 @CrossOrigin
-public class TypeCompteController {
+public class TypeController {
 
 	@Autowired(required = true)
-	private TypeCompteService typeCompteService;
+	private TypeService typeService;
 	
 	@GetMapping
-	public List<TypeCompte> getTypeComptes(){
-		return typeCompteService.findAll();
+	public List<Type> getTypes(){
+		return typeService.findAll();
 	}
 	
 	@PostMapping 
-	public void addTypeCompte(@RequestBody TypeCompte typeCompte) {
-		typeCompteService.create(typeCompte);
+	public void addType(@RequestBody Type type) {
+		typeService.create(type);
 	}
 	
 	@GetMapping("/{id}")
-	public TypeCompte getTypeCompteById(@PathVariable int id){
-		return typeCompteService.findById(id);
+	public Type getTypeById(@PathVariable int id){
+		return typeService.findById(id);
 	}
 	
 	
 	@PutMapping
-	public void updateTypeCompte(@RequestBody TypeCompte typeCompte) {
-		typeCompteService.update(typeCompte);
+	public void updateType(@RequestBody Type type) {
+		typeService.update(type);
 	}
 	
 	@DeleteMapping("/{id}")
-	public void deleteTypeCompte(@PathVariable int id) {
-		TypeCompte t = typeCompteService.findById(id);
-		typeCompteService.delete(t);
+	public void deleteType(@PathVariable int id) {
+		Type t = typeService.findById(id);
+		typeService.delete(t);
 	}
 }

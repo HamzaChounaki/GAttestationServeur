@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Transient;
 
 
 
@@ -22,8 +23,10 @@ public class Ville {
 	private String nom;
 	@ManyToOne(fetch = FetchType.EAGER)
 	private Region region;
+	@Transient
 	@OneToMany(mappedBy="ville")
 	private List<Etablissement> etablissements;
+	@Transient
 	
 	
 	public int getId() {

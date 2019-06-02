@@ -7,15 +7,17 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Transient;
 
 @Entity
-public class TypeCompte {
+public class Type {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String role;
-	@OneToMany(mappedBy = "typeCompte")
+	@Transient
+	@OneToMany(mappedBy = "type")
 	private List<Compte> comptes;
 	
 	
@@ -52,18 +54,18 @@ public class TypeCompte {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		TypeCompte other = (TypeCompte) obj;
+		Type other = (Type) obj;
 		if (id != other.id)
 			return false;
 		return true;
 	}
-	public TypeCompte(int id, String role, List<Compte> comptes) {
+	public Type(int id, String role, List<Compte> comptes) {
 		super();
 		this.id = id;
 		this.role = role;
 		this.comptes = comptes;
 	}
-	public TypeCompte() {
+	public Type() {
 		super();
 	}
 	

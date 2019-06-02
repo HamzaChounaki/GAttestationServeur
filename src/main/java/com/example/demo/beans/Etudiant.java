@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Transient;
 
 @Entity
 public class Etudiant {
@@ -25,8 +26,10 @@ public class Etudiant {
 	private String niveau;
 	@ManyToOne(fetch = FetchType.EAGER)
 	private Etablissement etablissement;
+	@Transient
 	@OneToMany(mappedBy="etudiant")
 	private List<Attestation> attestations;
+	
 	public int getId() {
 		return id;
 	}

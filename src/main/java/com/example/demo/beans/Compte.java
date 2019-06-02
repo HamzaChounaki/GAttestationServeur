@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.Transient;
 
 
 
@@ -18,10 +19,11 @@ public class Compte {
 	private int id;
 	private String login;
 	private String password;
+	@Transient
 	@OneToOne(mappedBy="compte")
 	private Employe employe;
 	@ManyToOne(fetch = FetchType.EAGER)
-	private TypeCompte typeCompte;
+	private Type type;
 	public int getId() {
 		return id;
 	}
@@ -46,11 +48,11 @@ public class Compte {
 	public void setEmploye(Employe employe) {
 		this.employe = employe;
 	}
-	public TypeCompte getTypeCompte() {
-		return typeCompte;
+	public Type getType() {
+		return type;
 	}
-	public void setTypeCompte(TypeCompte typeCompte) {
-		this.typeCompte = typeCompte;
+	public void setType(Type type) {
+		this.type = type;
 	}
 	@Override
 	public int hashCode() {
@@ -72,13 +74,13 @@ public class Compte {
 			return false;
 		return true;
 	}
-	public Compte(int id, String login, String password, Employe employe, TypeCompte typeCompte) {
+	public Compte(int id, String login, String password, Employe employe, Type type) {
 		super();
 		this.id = id;
 		this.login = login;
 		this.password = password;
 		this.employe = employe;
-		this.typeCompte = typeCompte;
+		this.type = type;
 	}
 	public Compte() {
 		super();
