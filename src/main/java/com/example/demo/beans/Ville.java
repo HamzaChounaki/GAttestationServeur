@@ -2,6 +2,7 @@ package com.example.demo.beans;
 
 import java.util.List;
 
+
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -26,7 +27,6 @@ public class Ville {
 	@Transient
 	@OneToMany(mappedBy="ville")
 	private List<Etablissement> etablissements;
-	@Transient
 	
 	
 	public int getId() {

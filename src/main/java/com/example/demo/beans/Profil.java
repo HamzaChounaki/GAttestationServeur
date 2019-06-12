@@ -17,22 +17,17 @@ public class Profil {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	private int code;
 	private String libelle;
 	@Transient
-	@OneToMany(mappedBy="profil")
+	@OneToMany(mappedBy="etablissement")
 	private List<Employe> employes;
+	
+	
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
-	}
-	public int getCode() {
-		return code;
-	}
-	public void setCode(int code) {
-		this.code = code;
 	}
 	public String getLibelle() {
 		return libelle;
@@ -66,14 +61,15 @@ public class Profil {
 			return false;
 		return true;
 	}
-	public Profil(int id, int code, String libelle, List<Employe> employes) {
+	public Profil(int id, String libelle, List<Employe> employes) {
 		super();
 		this.id = id;
-		this.code = code;
 		this.libelle = libelle;
 		this.employes = employes;
 	}
 	public Profil() {
 		super();
 	}
+	
+	
 }

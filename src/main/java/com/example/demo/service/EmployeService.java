@@ -17,7 +17,6 @@ public class EmployeService implements idao<Employe>{
 	@Override
 	public void create(Employe o) {
 		Employeres.save(o);
-		
 	}
 
 	@Override

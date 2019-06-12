@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.beans.Profil;
+import com.example.demo.repository.ProfilRepository;
 import com.example.demo.service.ProfilService;
 
 @RestController
@@ -21,6 +22,14 @@ import com.example.demo.service.ProfilService;
 @CrossOrigin
 public class ProfilController {
 
+	@Autowired
+	private ProfilRepository pres;
+	
+	@GetMapping("/{vvv}")
+	private List<Object> CountEmpnoParProfil(){
+		return pres.findByTitle();
+	}
+	
 	@Autowired(required = true)
 	private ProfilService profilService;
 	

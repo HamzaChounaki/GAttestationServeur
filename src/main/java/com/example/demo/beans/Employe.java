@@ -2,8 +2,7 @@ package com.example.demo.beans;
 
 import java.util.Date;
 import java.util.List;
-
-import javax.persistence.CascadeType;
+ 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -11,7 +10,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Transient;
 
 @Entity
@@ -25,13 +23,13 @@ public class Employe {
 	private Date dateNaissance;
 	private String lieuNaissance;
 	private Date dateEmbauche;
-	@Transient
-	@ManyToOne(fetch = FetchType.EAGER)
-	private Profil profil;
-	@OneToOne(cascade=CascadeType.ALL)
-	private Compte compte;
+	private String login;
+	private String password;
 	@ManyToOne(fetch = FetchType.EAGER)
 	private Etablissement etablissement;
+	@ManyToOne(fetch = FetchType.EAGER)
+	private Profil profil;
+	@Transient
 	@OneToMany(mappedBy="employe")
 	private List<Attestation> attestations;
 	public int getId() {
@@ -70,23 +68,29 @@ public class Employe {
 	public void setDateEmbauche(Date dateEmbauche) {
 		this.dateEmbauche = dateEmbauche;
 	}
-	public Profil getProfil() {
-		return profil;
+	public String getLogin() {
+		return login;
 	}
-	public void setProfil(Profil profil) {
-		this.profil = profil;
+	public void setLogin(String login) {
+		this.login = login;
 	}
-	public Compte getCompte() {
-		return compte;
+	public String getPassword() {
+		return password;
 	}
-	public void setCompte(Compte compte) {
-		this.compte = compte;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	public Etablissement getEtablissement() {
 		return etablissement;
 	}
 	public void setEtablissement(Etablissement etablissement) {
 		this.etablissement = etablissement;
+	}
+	public Profil getProfil() {
+		return profil;
+	}
+	public void setProfil(Profil profil) {
+		this.profil = profil;
 	}
 	public List<Attestation> getAttestations() {
 		return attestations;
@@ -115,7 +119,7 @@ public class Employe {
 		return true;
 	}
 	public Employe(int id, String nom, String prenom, Date dateNaissance, String lieuNaissance, Date dateEmbauche,
-			Profil profil, Compte compte, Etablissement etablissement, List<Attestation> attestations) {
+			String login, String password, Etablissement etablissement, Profil profil, List<Attestation> attestations) {
 		super();
 		this.id = id;
 		this.nom = nom;
@@ -123,15 +127,15 @@ public class Employe {
 		this.dateNaissance = dateNaissance;
 		this.lieuNaissance = lieuNaissance;
 		this.dateEmbauche = dateEmbauche;
-		this.profil = profil;
-		this.compte = compte;
+		this.login = login;
+		this.password = password;
 		this.etablissement = etablissement;
+		this.profil = profil;
 		this.attestations = attestations;
 	}
 	public Employe() {
 		super();
 	}
-	
 	
 	
 }

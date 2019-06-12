@@ -8,7 +8,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.Transient;
 
 
 @Entity
@@ -23,7 +22,6 @@ public class Attestation {
 	private Etudiant etudiant;
 	@ManyToOne(fetch = FetchType.EAGER)
 	private Employe employe;
-	@Transient
 	
 	public int getId() {
 		return id;

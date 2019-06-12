@@ -25,6 +25,7 @@ public class Etablissement {
 	@Transient
 	@OneToMany(mappedBy="etablissement")
 	private List<Employe> employes;
+	@Transient
 	@OneToMany(mappedBy="etablissement")
 	private List<Etudiant> etudiants;
 	
